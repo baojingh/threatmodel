@@ -219,20 +219,46 @@
                   "score": ""
                 },
                 {
-                  "id": "eece5cb3-ab0f-4f33-8ab5-87e3f6074ab1",
-                  "title": "Controller is not available",
+                  "id": "bb201b2d-8917-4406-aa60-7e75089e89c0",
+                  "title": "Runtime Data disclosure",
                   "status": "Open",
                   "severity": "Medium",
-                  "type": "Denial of service",
-                  "description": "The controller is attacked through USB or Ethernet interface.",
-                  "mitigation": "Authenticate the user who login through USB or Ethernet.",
+                  "type": "Information disclosure",
+                  "description": "The runtime data inside controller process maybe dumped, method like memory dump, ptrace, /proc system file, etc.",
+                  "mitigation": "1. system security. disable core dump in the system configuration, debug mode for the application.\n2. privilege. startup the application with least privilege.\n3. Security coding. credentials should be destroyed  after usage.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 11,
+                  "number": 12,
                   "score": ""
                 },
                 {
-                  "id": "bb201b2d-8917-4406-aa60-7e75089e89c0",
+                  "id": "68c54dd1-4a2d-40bd-828d-156ab798952a",
+                  "title": "Static data inside controller maybe disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "The static data including application configurations, application logs and monitoring metrics  inside controller system maybe attacked and  disclosure.\n",
+                  "mitigation": "1. credentials cannot be included in application configuration files and should be saved in TPM if necessary.\n2. application logs do NOT log credentials.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 13,
+                  "score": ""
+                },
+                {
+                  "id": "594c52d2-bed9-402e-bed5-0e5e32b3812a",
+                  "title": "Maintainer‘s login and operations should be saved",
+                  "status": "Open",
+                  "severity": "Low",
+                  "type": "Repudiation",
+                  "description": "Maintainers that login and operate the controllers may repudiate their behaviors.",
+                  "mitigation": "Maintainers's activities who login and operation the system should be saved and auditable. ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                },
+                {
+                  "id": "116dceaa-b8c1-4cb2-9731-561b4fb49a6e",
                   "title": "New STRIDE threat",
                   "status": "Open",
                   "severity": "TBD",
@@ -241,16 +267,29 @@
                   "mitigation": "Provide remediation for this threat or a reason if status is N/A",
                   "modelType": "STRIDE",
                   "new": true,
-                  "number": 12,
+                  "number": 15,
+                  "score": ""
+                },
+                {
+                  "id": "6a4b5a6e-55aa-4c52-81c1-17886667b0c0",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 16,
                   "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 0,
                 "tampering": 0,
-                "repudiation": 0,
-                "informationDisclosure": 0,
-                "denialOfService": 2,
+                "repudiation": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 1,
                 "elevationOfPrivilege": 0
               }
             }
@@ -2569,6 +2608,6 @@
     ],
     "diagramTop": 3,
     "reviewer": "Tom",
-    "threatTop": 12
+    "threatTop": 16
   }
 }
