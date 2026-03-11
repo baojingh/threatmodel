@@ -26,12 +26,12 @@
         "cells": [
           {
             "position": {
-              "x": 65.99999999999989,
-              "y": 400
+              "x": 65.99999999999915,
+              "y": 400.00000000000125
             },
             "size": {
-              "width": 700,
-              "height": 500
+              "width": 680,
+              "height": 390
             },
             "visible": true,
             "shape": "trust-boundary-box",
@@ -47,38 +47,17 @@
           },
           {
             "position": {
-              "x": 265.9999999999999,
-              "y": 100.00000000000102
+              "x": 65.99999999999977,
+              "y": 100.00000000000051
             },
             "size": {
-              "width": 500,
+              "width": 700,
               "height": 160
             },
             "visible": true,
             "shape": "trust-boundary-box",
             "zIndex": -1,
             "id": "1a65b896-facf-4e72-b4b6-44f5283bcd20",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Trust Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false
-            }
-          },
-          {
-            "position": {
-              "x": 241.9999999999999,
-              "y": -69.99999999999895
-            },
-            "size": {
-              "width": 510,
-              "height": 120
-            },
-            "visible": true,
-            "shape": "trust-boundary-box",
-            "zIndex": -1,
-            "id": "69747f2b-cd0b-4b4f-8197-ffe7ac035e15",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "Trust Boundary",
@@ -313,7 +292,7 @@
                   "id": "e3ef831f-666c-4dfe-9f67-8e85974d7bb6",
                   "title": "An attacker spoofs an administrator or maintenance user",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Spoofing",
                   "description": "An attacker spoofs an administrator or maintenance user",
                   "mitigation": "Strong password, multi-factor authentication (MFA), and certificate-based login.",
@@ -326,7 +305,7 @@
                   "id": "49457b64-11d0-42ba-b519-0c5e0af7e739",
                   "title": "Tamper with display content, voice broadcast, configuration, or emergency messages.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Tampering",
                   "description": "Tamper with display content, voice broadcast, configuration, or emergency messages.",
                   "mitigation": "Sign and verify all control commands and configuration data.",
@@ -339,7 +318,7 @@
                   "id": "8d13bab5-8963-49eb-8feb-7dbf81cbd403",
                   "title": "Malicious firmware or patch installation via Ethernet or USB.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Tampering",
                   "description": "Malicious firmware or patch installation via Ethernet or USB.",
                   "mitigation": "Mandatory digital signature verification for firmware and patches; secure update mechanism.",
@@ -352,7 +331,7 @@
                   "id": "21440ec9-1b3b-4ede-b9db-8a21a1c002cf",
                   "title": "Tamper with industrial protocol data between PIS and in-vehicle devices.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Tampering",
                   "description": "Tamper with industrial protocol data between PIS and in-vehicle devices.",
                   "mitigation": "Integrity check (checksum, HMAC, or encryption) for industrial communication.",
@@ -365,7 +344,7 @@
                   "id": "cac0b3a8-093c-4b32-ac1f-d89a6fb074cb",
                   "title": "Tamper with system logs to cover attacks.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Tampering",
                   "description": "Tamper with system logs to cover attacks.",
                   "mitigation": "Write-only log storage, remote log transmission, and log integrity protection.",
@@ -376,8 +355,8 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 5,
-                "tampering": 6,
+                "spoofing": 6,
+                "tampering": 10,
                 "repudiation": 2,
                 "informationDisclosure": 2,
                 "denialOfService": 2,
@@ -387,20 +366,20 @@
           },
           {
             "position": {
-              "x": 320,
-              "y": 150.00000000000102
+              "x": 310,
+              "y": 140.00000000000102
             },
             "size": {
-              "width": 50,
-              "height": 60
+              "width": 60,
+              "height": 70
             },
             "attrs": {
               "text": {
-                "text": "Local"
+                "text": "Server"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -492,137 +471,39 @@
             "id": "35f0cbf7-6339-4079-9b0c-bfdf4584ebab",
             "data": {
               "type": "tm.Process",
-              "name": "Local",
+              "name": "Server",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": 305,
-              "y": -40
-            },
-            "size": {
-              "width": 50,
-              "height": 50
-            },
-            "attrs": {
-              "text": {
-                "text": "Cloud"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
+              "threats": [
+                {
+                  "id": "5257fbfe-bb4d-4404-86cf-6a701a5d3131",
+                  "title": "Have DDOS attack from controller and out of service",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Have DDOS attack from controller and out of service",
+                  "mitigation": "authenticate controller",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 63,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
               }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 3,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "a28731eb-4462-4cc3-a994-0f697384684e"
-                },
-                {
-                  "group": "right",
-                  "id": "7bc7e4c1-94e8-4e27-8135-9fc44f062d37"
-                },
-                {
-                  "group": "bottom",
-                  "id": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-                },
-                {
-                  "group": "left",
-                  "id": "2289b35a-e870-4865-81e4-37056b3bb4c8"
-                }
-              ]
-            },
-            "id": "205d12f0-3fc3-40d5-b414-84a19ffe9f93",
-            "data": {
-              "type": "tm.Process",
-              "name": "Cloud",
-              "description": "Cloud service",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": []
             }
           },
           {
@@ -636,14 +517,16 @@
             },
             "attrs": {
               "text": {
-                "text": "MySQL-local"
+                "text": "MySQL"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -735,194 +618,52 @@
             "id": "b550325c-dd6c-4fe8-9548-207f5099a529",
             "data": {
               "type": "tm.Store",
-              "name": "MySQL-local",
+              "name": "MySQL",
               "description": "Database for data storage",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": 525,
-              "y": -45
-            },
-            "size": {
-              "width": 130,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "MySQL-cloud"
-              },
-              "topLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              },
-              "bottomLine": {
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "store",
-            "zIndex": 5,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
+              "threats": [
+                {
+                  "id": "28b22233-9d20-4c62-8b54-b45a45f897b3",
+                  "title": "Data inside MySQL may disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Data inside MySQL may disclosure",
+                  "mitigation": "Encrypted data at rest",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 56,
+                  "score": ""
                 },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
+                {
+                  "id": "4e019b85-1d89-454d-8305-78f3fb6ff428",
+                  "title": "MySQL cannot provide service  because of resource",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "MySQL cannot provide service  because of resource",
+                  "mitigation": "Limit query rate; authenticate request",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 60,
+                  "score": ""
                 }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "c9f357b3-b7e1-42e9-9dcb-91b384c628d8"
-                },
-                {
-                  "group": "right",
-                  "id": "ca2986f7-8e2b-4e59-ae32-31ac886a63d4"
-                },
-                {
-                  "group": "bottom",
-                  "id": "351504e6-0ac1-40f5-ad7d-c81df8eefe0b"
-                },
-                {
-                  "group": "left",
-                  "id": "6245e976-b45d-45ea-a45c-48e1845bebc1"
-                }
-              ]
-            },
-            "id": "12c85f37-9f2f-4147-8ffe-5c4270e97956",
-            "data": {
-              "type": "tm.Store",
-              "name": "MySQL-cloud",
-              "description": "database",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isALog": false,
-              "isEncrypted": false,
-              "isSigned": false,
-              "storesCredentials": false,
-              "storesInventory": false,
-              "threats": []
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 1
+              }
             }
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Internet HTTPS",
-              "description": "Internet access. the service inside the customer side communicate with cloud side.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": true,
-              "isPublicNetwork": true,
-              "protocol": "HTTPS",
-              "threats": []
-            },
-            "labels": [
-              "Internet HTTPS"
-            ],
-            "id": "929bae12-724a-4c34-8ce3-a97c106ae93c",
-            "source": {
-              "cell": "35f0cbf7-6339-4079-9b0c-bfdf4584ebab",
-              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
-            },
-            "target": {
-              "cell": "205d12f0-3fc3-40d5-b414-84a19ffe9f93",
-              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-            },
-            "vertices": [
-              {
-                "x": 345,
-                "y": 50
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -994,66 +735,8 @@
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Request HTTPS",
-              "description": "User request seat reservation through smartphone app.",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": true,
-              "isPublicNetwork": true,
-              "protocol": "HTTPS",
-              "threats": []
-            },
-            "labels": [
-              "Request HTTPS"
-            ],
-            "id": "563214d5-79a4-4de7-9eae-289e8150419f",
-            "source": {
-              "cell": "e36ae027-3391-46fb-ac43-117c0a575074",
-              "port": "10e47011-de90-4b00-9976-33e05c6fa558"
-            },
-            "target": {
-              "cell": "205d12f0-3fc3-40d5-b414-84a19ffe9f93",
-              "port": "2289b35a-e870-4865-81e4-37056b3bb4c8"
-            },
-            "vertices": [
-              {
-                "x": 0,
-                "y": 140
-              },
-              {
-                "x": 110,
-                "y": 110
-              },
-              {
-                "x": 220,
-                "y": 60
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1074,12 +757,44 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
+              "protocol": "Bluetooth",
+              "threats": [
+                {
+                  "id": "f1e842ca-3afa-4a65-a4dd-d9436b3be258",
+                  "title": "An attacker tampers with Bluetooth communication data",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "An attacker tampers with Bluetooth communication data, modifying station names, stop information, arrival status, or vehicle location.\n",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 50,
+                  "score": ""
+                },
+                {
+                  "id": "9265f895-3565-4f16-aa86-b2dad71d23f1",
+                  "title": "Attackers eavesdrop on unencrypted Bluetooth communication to obtain user device info.",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Attackers eavesdrop on unencrypted Bluetooth communication to obtain stop information, vehicle status, route data, or user device info.",
+                  "mitigation": "Encrypt Bluetooth communication; use BLE secure connections; avoid transmitting sensitive plaintext data.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 51,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "BlueTooth"
@@ -1093,18 +808,44 @@
               "cell": "d15979e8-44dc-440f-9188-b059573de091",
               "port": "2289b35a-e870-4865-81e4-37056b3bb4c8"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": -80,
+                "y": 310
+              },
+              {
+                "x": -40,
+                "y": 310
+              },
+              {
+                "x": -20,
+                "y": 330
+              },
+              {
+                "x": 10,
+                "y": 350
+              },
+              {
+                "x": 40,
+                "y": 350
+              },
+              {
+                "x": 50,
+                "y": 360
+              }
+            ]
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
+                  "name": "block"
                 },
                 "strokeDasharray": null
               }
@@ -1115,66 +856,52 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "HTTPS",
+              "name": "MySQL TLS",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
+              "hasOpenThreats": true,
+              "isBidirectional": true,
+              "isEncrypted": true,
               "isPublicNetwork": false,
               "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "HTTPS"
-            ],
-            "id": "c3c8e01a-d375-4e29-9f96-fd4f81ec46ec",
-            "source": {
-              "cell": "205d12f0-3fc3-40d5-b414-84a19ffe9f93",
-              "port": "7bc7e4c1-94e8-4e27-8135-9fc44f062d37"
-            },
-            "target": {
-              "cell": "12c85f37-9f2f-4147-8ffe-5c4270e97956",
-              "port": "6245e976-b45d-45ea-a45c-48e1845bebc1"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
+              "threats": [
+                {
+                  "id": "a11530c9-828c-4718-b7df-6ffd2331c24f",
+                  "title": "Data in transit maybe tampered",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Data in transit maybe tampered",
+                  "mitigation": "Encryption with mutual TLS",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 61,
+                  "score": ""
                 },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
+                {
+                  "id": "4bfbb55c-8d3c-4edf-a016-342375b313b0",
+                  "title": "Data may have information disclosure",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Data may have information disclosure",
+                  "mitigation": "Encryption with mutual TLS",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 62,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 0
               }
             },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
             "labels": [
-              "HTTPS"
+              "MySQL TLS"
             ],
             "id": "7160f934-276e-4648-81c9-a39800f3276a",
             "source": {
@@ -1185,13 +912,27 @@
               "cell": "b550325c-dd6c-4fe8-9548-207f5099a529",
               "port": "6245e976-b45d-45ea-a45c-48e1845bebc1"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": 410,
+                "y": 175
+              },
+              {
+                "x": 460,
+                "y": 180
+              },
+              {
+                "x": 490,
+                "y": 180
+              }
+            ]
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1212,12 +953,44 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": true,
               "isEncrypted": true,
               "isPublicNetwork": false,
               "protocol": "HTTPS",
-              "threats": []
+              "threats": [
+                {
+                  "id": "0036427f-d9e1-45fc-8959-8565118eade3",
+                  "title": "Attacker gain the information of bus information and device information",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Attacker gain the information of bus information and device information",
+                  "mitigation": "encrypted communication with mutual TLS",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 57,
+                  "score": ""
+                },
+                {
+                  "id": "f0ce1f9e-b9c5-457b-9933-0c4bb166134d",
+                  "title": "Attacker tamper information and send to controllers",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Attacker tamper information and send to controllers",
+                  "mitigation": "mutual TLS communication; mutual authentication",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 58,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Intranet HTTPS"
@@ -1231,13 +1004,19 @@
               "cell": "d15979e8-44dc-440f-9188-b059573de091",
               "port": "a28731eb-4462-4cc3-a994-0f697384684e"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": 340,
+                "y": 310
+              }
+            ]
           },
           {
             "shape": "flow",
             "attrs": {
               "line": {
-                "stroke": "#333333",
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "targetMarker": {
                   "name": "block"
                 },
@@ -1258,12 +1037,31 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isBidirectional": false,
               "isEncrypted": true,
               "isPublicNetwork": false,
               "protocol": "HTTPS",
-              "threats": []
+              "threats": [
+                {
+                  "id": "c52a0036-bcc4-4f86-beb3-75ab6f13b2c7",
+                  "title": "Attacker connects through ethernet/usb to gain some information from controller",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "Attacker connects through ethernet/usb to gain some information from controller",
+                  "mitigation": "authentication",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 54,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0
+              }
             },
             "labels": [
               "Admin HTTPS/USB"
@@ -1354,6 +1152,14 @@
             },
             "vertices": [
               {
+                "x": 330,
+                "y": 540
+              },
+              {
+                "x": 300,
+                "y": 590
+              },
+              {
                 "x": 280,
                 "y": 630
               },
@@ -1427,7 +1233,12 @@
               "cell": "8f637225-fd97-414f-968d-829cd76d854d",
               "port": "a28731eb-4462-4cc3-a994-0f697384684e"
             },
-            "vertices": []
+            "vertices": [
+              {
+                "x": 540,
+                "y": 570
+              }
+            ]
           },
           {
             "position": {
@@ -1443,8 +1254,8 @@
                 "text": "Admin"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1541,15 +1352,33 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": true,
-              "threats": []
+              "threats": [
+                {
+                  "id": "f5e5960c-f582-4908-ab18-d9babb90006b",
+                  "title": "attacker act like administrator to operate the controller",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "attacker act like administrator to operate the controller",
+                  "mitigation": "Authentication",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 55,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
             }
           },
           {
             "position": {
-              "x": -275,
-              "y": 250.00000000000006
+              "x": -280,
+              "y": 240.00000000000006
             },
             "size": {
               "width": 50,
@@ -1560,8 +1389,8 @@
                 "text": "User"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1658,15 +1487,46 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "cefb9acb-bcf8-49e7-9f2c-d53227db6671",
+                  "title": "An attacker spoofs the legitimate bus controller Bluetooth device",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs the legitimate bus controller Bluetooth device. The user’s phone connects to a fake controller and receives false stop information.\n",
+                  "mitigation": "Bluetooth device authentication; verify controller identifier; avoid auto-connect to unknown devices.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 47,
+                  "score": ""
+                },
+                {
+                  "id": "ef2b530f-423e-4de2-93a0-483abfa954bb",
+                  "title": "Malicious actions cannot be traced.",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "No logs or identity records for Bluetooth connections and data transmission. Malicious actions cannot be traced.\n",
+                  "mitigation": "Log Bluetooth connections, device MAC, timestamps, and data operations; store logs securely.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 49,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 2
+              }
             }
           },
           {
             "position": {
               "x": 545,
-              "y": 717
+              "y": 610.0000000000013
             },
             "size": {
               "width": 50,
@@ -1808,23 +1668,10 @@
                   "score": ""
                 },
                 {
-                  "id": "25c4ab90-83f6-4cac-84d9-9ec3afd744b7",
-                  "title": "New STRIDE threat",
-                  "status": "Open",
-                  "severity": "TBD",
-                  "type": "Repudiation",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
-                  "modelType": "STRIDE",
-                  "new": true,
-                  "number": 35,
-                  "score": ""
-                },
-                {
                   "id": "ae7e6307-92b4-4bd0-856b-fe03ff4da2e3",
                   "title": "Tamper with control commands e.g, brightness.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Repudiation",
                   "description": "Tamper with control commands e.g, brightness.",
                   "mitigation": "Sign all critical commands; reject unsigned or invalid commands.\n",
@@ -1837,7 +1684,7 @@
                   "id": "ae21f902-ffcc-4363-a237-62e62f89c65b",
                   "title": "Malicious configuration or firmware update on devices.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Tampering",
                   "description": "Malicious configuration or firmware update on devices.",
                   "mitigation": "Secure boot and firmware signature verification; encrypted update packages.\n",
@@ -1850,7 +1697,7 @@
                   "id": "2c10239a-f296-4999-84b3-326146672a59",
                   "title": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Repudiation",
                   "description": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
                   "mitigation": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
@@ -1863,7 +1710,7 @@
                   "id": "46762a24-69da-4bc3-b876-3b9d13d56901",
                   "title": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Denial of service",
                   "description": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
                   "mitigation": "Packet validation, rate limiting, network isolation, and watchdog mechanism.\n",
@@ -1875,18 +1722,18 @@
               ],
               "threatFrequency": {
                 "spoofing": 2,
-                "tampering": 2,
-                "repudiation": 2,
+                "tampering": 3,
+                "repudiation": 4,
                 "informationDisclosure": 1,
-                "denialOfService": 1,
+                "denialOfService": 2,
                 "elevationOfPrivilege": 0
               }
             }
           },
           {
             "position": {
-              "x": 370,
-              "y": 792
+              "x": 420,
+              "y": 680
             },
             "size": {
               "width": 60,
@@ -2057,7 +1904,7 @@
                   "id": "673f4599-6207-4d72-92d1-746fe2d39939",
                   "title": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Repudiation",
                   "description": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
                   "mitigation": "Log all content issuance, command sending, and device responses.\n",
@@ -2083,7 +1930,7 @@
               "threatFrequency": {
                 "spoofing": 1,
                 "tampering": 2,
-                "repudiation": 2,
+                "repudiation": 3,
                 "informationDisclosure": 1,
                 "denialOfService": 1,
                 "elevationOfPrivilege": 0
@@ -2092,8 +1939,8 @@
           },
           {
             "position": {
-              "x": 181.9999999999999,
-              "y": 782
+              "x": 221.9999999999999,
+              "y": 680
             },
             "size": {
               "width": 60,
@@ -2277,7 +2124,7 @@
                   "id": "790df2c4-a417-441d-8c73-d70290eff7a5",
                   "title": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "Medium",
                   "type": "Repudiation",
                   "description": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
                   "mitigation": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
@@ -2303,7 +2150,7 @@
               "threatFrequency": {
                 "spoofing": 2,
                 "tampering": 4,
-                "repudiation": 2,
+                "repudiation": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 1,
                 "elevationOfPrivilege": 0
@@ -2360,25 +2207,25 @@
           },
           {
             "position": {
-              "x": 812,
-              "y": -40
+              "x": -320.00000000000034,
+              "y": 60.00000000000115
             },
             "size": {
-              "width": 112.5,
-              "height": 60
+              "width": 230,
+              "height": 130
             },
             "attrs": {
               "text": {
-                "text": "Zone Enterprise"
+                "text": "1. User uses smartphone to register \na seat reservation \nthrough application in advance. \n\n2. Bob believes there is a \ncloud service, but we just \nignore it and consider it later."
               }
             },
             "visible": true,
             "shape": "td-text-block",
-            "zIndex": 21,
-            "id": "8351ab0c-4fa7-4d34-996c-d2be55d24f39",
+            "zIndex": 22,
+            "id": "36999e00-4cb6-4325-8954-536f00b9f110",
             "data": {
               "type": "tm.Text",
-              "name": "Zone Enterprise",
+              "name": "1. User uses smartphone to register \na seat reservation \nthrough application in advance. \n\n2. Bob believes there is a \ncloud service, but we just \nignore it and consider it later.",
               "hasOpenThreats": false
             }
           }
@@ -2388,6 +2235,6 @@
     ],
     "diagramTop": 3,
     "reviewer": "Tom",
-    "threatTop": 46
+    "threatTop": 64
   }
 }
