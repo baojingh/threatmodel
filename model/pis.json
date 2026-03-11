@@ -26,7 +26,7 @@
         "cells": [
           {
             "position": {
-              "x": 75,
+              "x": 65.99999999999989,
               "y": 400
             },
             "size": {
@@ -211,8 +211,8 @@
                   "status": "Open",
                   "severity": "High",
                   "type": "Denial of service",
-                  "description": "The controller is attacked,  the resource is exhausted and cannot provide service.",
-                  "mitigation": "Limit the communication frequency with customer Local Center.",
+                  "description": "The controller is attacked through USB/Ethernet,  the resource is exhausted and cannot provide service.",
+                  "mitigation": "1. Limit the communication frequency with customer Local Center.\n2. Limit USB HID enum\n3. physical USB interface should be locked.\n4. Limit the interface speed and broadcast for ethernet interface. IP whitelist\n",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 10,
@@ -259,45 +259,136 @@
                 },
                 {
                   "id": "116dceaa-b8c1-4cb2-9731-561b4fb49a6e",
-                  "title": "New STRIDE threat",
+                  "title": "Login through USB/Ethernet should be authnticated",
                   "status": "Open",
-                  "severity": "TBD",
+                  "severity": "High",
                   "type": "Spoofing",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "Attacker impersonated  the administrator to patch/operate the application and system through USB/Ethernet.",
+                  "mitigation": "For USB/Ethernet, authentication for the login user should be considered. for example, username/password, hardware key, etc.",
                   "modelType": "STRIDE",
-                  "new": true,
+                  "new": false,
                   "number": 15,
                   "score": ""
                 },
                 {
                   "id": "6a4b5a6e-55aa-4c52-81c1-17886667b0c0",
-                  "title": "New STRIDE threat",
+                  "title": "Gain root or high privileges via USB debugging or malformed USB data.",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "description": "Gain root or high privileges via USB debugging or malformed USB data.",
+                  "mitigation": "Disable unused debug interfaces; run services with least privilege.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 16,
+                  "score": ""
+                },
+                {
+                  "id": "06cbac49-88d1-438e-855d-71e9b9169b08",
+                  "title": "An attacker spoofs the identity of the local server to send fake commands to the PIS device.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs the identity of the local server to send fake commands to the PIS device.",
+                  "mitigation": "Mutual TLS, device certificate authentication, and IP whitelisting between PIS and server.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 17,
+                  "score": ""
+                },
+                {
+                  "id": "6d61c346-874d-44f7-9870-9115d11db867",
+                  "title": "An attacker spoofs other in-vehicle devices (LED, audio/PA system) via industrial protocols",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs other in-vehicle devices (LED, audio/PA system) via industrial protocols.",
+                  "mitigation": "Authenticate industrial protocol communication; use secure protocol extensions or source validation.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "e3ef831f-666c-4dfe-9f67-8e85974d7bb6",
+                  "title": "An attacker spoofs an administrator or maintenance user",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "An attacker spoofs an administrator or maintenance user",
+                  "mitigation": "Strong password, multi-factor authentication (MFA), and certificate-based login.",
                   "modelType": "STRIDE",
-                  "new": true,
-                  "number": 16,
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                },
+                {
+                  "id": "49457b64-11d0-42ba-b519-0c5e0af7e739",
+                  "title": "Tamper with display content, voice broadcast, configuration, or emergency messages.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Tamper with display content, voice broadcast, configuration, or emergency messages.",
+                  "mitigation": "Sign and verify all control commands and configuration data.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "8d13bab5-8963-49eb-8feb-7dbf81cbd403",
+                  "title": "Malicious firmware or patch installation via Ethernet or USB.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Malicious firmware or patch installation via Ethernet or USB.",
+                  "mitigation": "Mandatory digital signature verification for firmware and patches; secure update mechanism.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                },
+                {
+                  "id": "21440ec9-1b3b-4ede-b9db-8a21a1c002cf",
+                  "title": "Tamper with industrial protocol data between PIS and in-vehicle devices.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Tamper with industrial protocol data between PIS and in-vehicle devices.",
+                  "mitigation": "Integrity check (checksum, HMAC, or encryption) for industrial communication.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
+                },
+                {
+                  "id": "cac0b3a8-093c-4b32-ac1f-d89a6fb074cb",
+                  "title": "Tamper with system logs to cover attacks.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Tamper with system logs to cover attacks.",
+                  "mitigation": "Write-only log storage, remote log transmission, and log integrity protection.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
                   "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 0,
-                "tampering": 0,
-                "repudiation": 1,
+                "spoofing": 5,
+                "tampering": 6,
+                "repudiation": 2,
                 "informationDisclosure": 2,
-                "denialOfService": 1,
-                "elevationOfPrivilege": 0
+                "denialOfService": 2,
+                "elevationOfPrivilege": 1
               }
             }
           },
           {
             "position": {
               "x": 320,
-              "y": 150
+              "y": 150.00000000000102
             },
             "size": {
               "width": 50,
@@ -843,231 +934,6 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Seat HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": true,
-              "isEncrypted": true,
-              "isPublicNetwork": false,
-              "protocol": "HTTPS",
-              "threats": [
-                {
-                  "id": "0686df17-90e4-49e3-88ac-95409efa928e",
-                  "title": "Messages are tampered",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "Messages are tampered by attackers and spread harmful information to the public.\n",
-                  "mitigation": "The messages and channel should be encrypted.\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 8,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "Seat HTTPS"
-            ],
-            "id": "0070ab59-cf9b-4a88-b321-8483804acfc8",
-            "source": {
-              "cell": "d15979e8-44dc-440f-9188-b059573de091",
-              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-            },
-            "target": {
-              "cell": "06594da7-ac47-4085-9a20-c91049fd4d01",
-              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
-            },
-            "vertices": [
-              {
-                "x": 280,
-                "y": 630
-              },
-              {
-                "x": 270,
-                "y": 660
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Counting HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": true,
-              "isEncrypted": true,
-              "isPublicNetwork": false,
-              "protocol": "HTTPS",
-              "threats": [
-                {
-                  "id": "1e35a10e-c55c-48b5-8f11-70cca71b511b",
-                  "title": "Messages are tampered",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "Messages are tampered by attackers and spread harmful information to the public.\n",
-                  "mitigation": "The messages and channel should be encrypted.\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 9,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "Counting HTTPS"
-            ],
-            "id": "c45e4ce7-7697-4c5e-a950-a65e3df2fd6f",
-            "source": {
-              "cell": "d15979e8-44dc-440f-9188-b059573de091",
-              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-            },
-            "target": {
-              "cell": "5c042a8b-538d-4304-b2ea-475cc991648f",
-              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
-            },
-            "vertices": [
-              {
-                "x": 260,
-                "y": 530
-              },
-              {
-                "x": 230,
-                "y": 550
-              },
-              {
-                "x": 180,
-                "y": 600
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "TFT HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": true,
-              "isPublicNetwork": false,
-              "protocol": "HTTPS",
-              "threats": [
-                {
-                  "id": "65717d3c-0923-4d0d-b9e7-1fc49af4ad25",
-                  "title": "Messages are tampered",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "The messages could be tampered by the attackers and spread harmful information to the public",
-                  "mitigation": "The messages and channel should be encrypted.\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 7,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "TFT HTTPS"
-            ],
-            "id": "8f57702e-e228-44a7-98bf-196e9ff7eb01",
-            "source": {
-              "cell": "d15979e8-44dc-440f-9188-b059573de091",
-              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-            },
-            "target": {
-              "cell": "091195d3-4acb-4b68-9b00-6cabece20bb1",
-              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
-            },
-            "vertices": [
-              {
-                "x": 355,
-                "y": 650
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
                   "name": ""
                 },
                 "strokeDasharray": null
@@ -1123,160 +989,6 @@
               "port": "a28731eb-4462-4cc3-a994-0f697384684e"
             },
             "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "LED HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": true,
-              "isPublicNetwork": false,
-              "protocol": "HTTPS",
-              "threats": [
-                {
-                  "id": "07bd158c-c993-42fe-be76-1b549d99ffbb",
-                  "title": "Messages are tampered",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "Messages are tampered by attackers and spread harmful information to the public.",
-                  "mitigation": "The messages and channel should be encrypted.",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 5,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 2,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "LED HTTPS"
-            ],
-            "id": "88bffdfc-2fb2-4ded-86d5-6306b8eb026f",
-            "source": {
-              "cell": "d15979e8-44dc-440f-9188-b059573de091",
-              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-            },
-            "target": {
-              "cell": "8f637225-fd97-414f-968d-829cd76d854d",
-              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
-            },
-            "vertices": [
-              {
-                "x": 450,
-                "y": 540
-              },
-              {
-                "x": 500,
-                "y": 560
-              },
-              {
-                "x": 560,
-                "y": 600
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "red",
-                "strokeWidth": 2.5,
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "Emergency HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": true,
-              "isBidirectional": false,
-              "isEncrypted": true,
-              "isPublicNetwork": false,
-              "protocol": "HTTPS",
-              "threats": [
-                {
-                  "id": "d520c909-7a9c-435b-aade-e7c4fb747c29",
-                  "title": "Messages are tampered",
-                  "status": "Open",
-                  "severity": "Medium",
-                  "type": "Tampering",
-                  "description": "The messages could be tampered by the attackers and spread harmful information to the public",
-                  "mitigation": "The messages and channel should be encrypted.\n",
-                  "modelType": "STRIDE",
-                  "new": false,
-                  "number": 6,
-                  "score": ""
-                }
-              ],
-              "threatFrequency": {
-                "tampering": 1,
-                "informationDisclosure": 0,
-                "denialOfService": 0
-              }
-            },
-            "labels": [
-              "Emergency HTTPS"
-            ],
-            "id": "d1dca486-f8ba-462a-865f-99ee915bee81",
-            "source": {
-              "cell": "d15979e8-44dc-440f-9188-b059573de091",
-              "port": "7bc7e4c1-94e8-4e27-8135-9fc44f062d37"
-            },
-            "target": {
-              "cell": "9c7aa448-2e77-48c2-9c92-4556d7fb69cf",
-              "port": "2289b35a-e870-4865-81e4-37056b3bb4c8"
-            },
-            "vertices": [
-              {
-                "x": 520,
-                "y": 490
-              },
-              {
-                "x": 590,
-                "y": 490
-              }
-            ]
           },
           {
             "shape": "flow",
@@ -1577,9 +1289,150 @@
             ]
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Seat HTTPS",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": true,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "0686df17-90e4-49e3-88ac-95409efa928e",
+                  "title": "Messages are tampered",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Messages are tampered by attackers and spread harmful information to the public.\n",
+                  "mitigation": "The messages and channel should be encrypted.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 8,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "Seat HTTPS"
+            ],
+            "id": "0070ab59-cf9b-4a88-b321-8483804acfc8",
+            "source": {
+              "cell": "d15979e8-44dc-440f-9188-b059573de091",
+              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
+            },
+            "target": {
+              "cell": "06594da7-ac47-4085-9a20-c91049fd4d01",
+              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
+            },
+            "vertices": [
+              {
+                "x": 280,
+                "y": 630
+              },
+              {
+                "x": 270,
+                "y": 660
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "LED HTTPS",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS",
+              "threats": [
+                {
+                  "id": "06a321a6-4258-46be-b2c9-59333ddbf982",
+                  "title": "The messages could be tampered by the attackers and spread harmful information to the public",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "The messages could be tampered by the attackers and spread harmful information to the public",
+                  "mitigation": "encrypted with mutul  HTTPS",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 46,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "LED HTTPS"
+            ],
+            "id": "bc5ff2c8-4726-43e1-9a79-52f28ea78aaa",
+            "source": {
+              "cell": "d15979e8-44dc-440f-9188-b059573de091",
+              "port": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
+            },
+            "target": {
+              "cell": "8f637225-fd97-414f-968d-829cd76d854d",
+              "port": "a28731eb-4462-4cc3-a994-0f697384684e"
+            },
+            "vertices": []
+          },
+          {
             "position": {
-              "x": -345,
-              "y": 350
+              "x": -285,
+              "y": 440
             },
             "size": {
               "width": 60,
@@ -1695,8 +1548,8 @@
           },
           {
             "position": {
-              "x": -355,
-              "y": 210.00000000000006
+              "x": -275,
+              "y": 250.00000000000006
             },
             "size": {
               "width": 50,
@@ -1812,8 +1665,8 @@
           },
           {
             "position": {
-              "x": 615,
-              "y": 655
+              "x": 545,
+              "y": 717
             },
             "size": {
               "width": 50,
@@ -1824,8 +1677,8 @@
                 "text": "LED"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1922,18 +1775,118 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "08fea95a-4334-48a9-a000-4970a463b3e1",
+                  "title": "An attacker spoofs legitimate control commands and spread harmful information",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs legitimate control commands and spread harmful information",
+                  "mitigation": "Use certificate-based or pre-shared key (PSK) authentication for control communication.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 29,
+                  "score": ""
+                },
+                {
+                  "id": "17d58cbb-cdff-4a78-9798-1cd844bb6bf1",
+                  "title": "Tamper with display content, broadcast text during transmission.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Tamper with display content, broadcast text during transmission.",
+                  "mitigation": "Data integrity check using HMAC, checksum, or digital signature.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 32,
+                  "score": ""
+                },
+                {
+                  "id": "25c4ab90-83f6-4cac-84d9-9ec3afd744b7",
+                  "title": "New STRIDE threat",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": true,
+                  "number": 35,
+                  "score": ""
+                },
+                {
+                  "id": "ae7e6307-92b4-4bd0-856b-fe03ff4da2e3",
+                  "title": "Tamper with control commands e.g, brightness.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Tamper with control commands e.g, brightness.",
+                  "mitigation": "Sign all critical commands; reject unsigned or invalid commands.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 36,
+                  "score": ""
+                },
+                {
+                  "id": "ae21f902-ffcc-4363-a237-62e62f89c65b",
+                  "title": "Malicious configuration or firmware update on devices.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Malicious configuration or firmware update on devices.",
+                  "mitigation": "Secure boot and firmware signature verification; encrypted update packages.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 39,
+                  "score": ""
+                },
+                {
+                  "id": "2c10239a-f296-4999-84b3-326146672a59",
+                  "title": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "mitigation": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 42,
+                  "score": ""
+                },
+                {
+                  "id": "46762a24-69da-4bc3-b876-3b9d13d56901",
+                  "title": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "mitigation": "Packet validation, rate limiting, network isolation, and watchdog mechanism.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 45,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "tampering": 2,
+                "repudiation": 2,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "position": {
-              "x": 515,
-              "y": 782
+              "x": 370,
+              "y": 792
             },
             "size": {
               "width": 60,
@@ -1944,8 +1897,8 @@
                 "text": "Audio"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2042,137 +1995,104 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": 360,
-              "y": 822
-            },
-            "size": {
-              "width": 60,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "TFT"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
+              "threats": [
+                {
+                  "id": "79a24c45-761e-49d4-a541-00adc03ef57d",
+                  "title": "An attacker spoofs legitimate control commands and spread harmful information",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs legitimate control commands and spread harmful information",
+                  "mitigation": "Use certificate-based or pre-shared key (PSK) authentication for control communication.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 28,
+                  "score": ""
+                },
+                {
+                  "id": "cf455d81-2566-445c-951b-f60275a1c7dc",
+                  "title": "Tamper with broadcast text, or audio data during transmission.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Tamper with broadcast text, or audio data during transmission.",
+                  "mitigation": "Data integrity check using HMAC, checksum, or digital signature.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 31,
+                  "score": ""
+                },
+                {
+                  "id": "5f99762d-c558-4f84-9b61-4accd937ba17",
+                  "title": "Tamper with control commands e.g., volume",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Repudiation",
+                  "description": "Tamper with control commands e.g., volume",
+                  "mitigation": "Sign all critical commands; reject unsigned or invalid commands.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 34,
+                  "score": ""
+                },
+                {
+                  "id": "ad0f8ae8-a665-41f0-9d7b-1c2d3c84f276",
+                  "title": "Malicious configuration or firmware update on devices.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Malicious configuration or firmware update on devices.",
+                  "mitigation": "Secure boot and firmware signature verification; encrypted update packages.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 38,
+                  "score": ""
+                },
+                {
+                  "id": "673f4599-6207-4d72-92d1-746fe2d39939",
+                  "title": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "mitigation": "Log all content issuance, command sending, and device responses.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 41,
+                  "score": ""
+                },
+                {
+                  "id": "c773cdef-cc82-4cea-8549-b5eacb84e402",
+                  "title": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "mitigation": "Packet validation, rate limiting, network isolation, and watchdog mechanism.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 44,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 2,
+                "repudiation": 2,
+                "informationDisclosure": 1,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
               }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 15,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "a28731eb-4462-4cc3-a994-0f697384684e"
-                },
-                {
-                  "group": "right",
-                  "id": "7bc7e4c1-94e8-4e27-8135-9fc44f062d37"
-                },
-                {
-                  "group": "bottom",
-                  "id": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-                },
-                {
-                  "group": "left",
-                  "id": "2289b35a-e870-4865-81e4-37056b3bb4c8"
-                }
-              ]
-            },
-            "id": "091195d3-4acb-4b68-9b00-6cabece20bb1",
-            "data": {
-              "type": "tm.Process",
-              "name": "TFT",
-              "description": "TFT display",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": []
             }
           },
           {
             "position": {
-              "x": 180,
+              "x": 181.9999999999999,
               "y": 782
             },
             "size": {
@@ -2184,8 +2104,8 @@
                 "text": "Seat"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2282,252 +2202,112 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": 645,
-              "y": 500
-            },
-            "size": {
-              "width": 130,
-              "height": 80
-            },
-            "attrs": {
-              "text": {
-                "text": "Emergency"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
+              "threats": [
+                {
+                  "id": "9b8fac35-2b1b-4927-afba-0810cdbd6b10",
+                  "title": "An attacker spoofs PIS to send fake information to PIS controller",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs PIS to send fake information to PIS controller",
+                  "mitigation": "Mutual authentication between PIS and counting devices; device identity validation.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 25,
+                  "score": ""
+                },
+                {
+                  "id": "8f69f2c4-672b-43e9-a98b-94f4c65ed781",
+                  "title": "An attacker spoofs legitimate control commands and spread harmful information",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "An attacker spoofs legitimate control commands and spread harmful information",
+                  "mitigation": "Use certificate-based or pre-shared key (PSK) authentication for control communication.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 26,
+                  "score": ""
+                },
+                {
+                  "id": "5183079f-c96f-4344-8c43-26772db901cd",
+                  "title": "Tamper with control commands e.g, brightness.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Tamper with control commands e.g, brightness.",
+                  "mitigation": "Sign all critical commands; reject unsigned or invalid commands.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 27,
+                  "score": ""
+                },
+                {
+                  "id": "4f36c2db-2201-4989-aad1-8a610f9622ba",
+                  "title": "Tamper with display content during transmission.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Tamper with display content during transmission.",
+                  "mitigation": "Data integrity check using HMAC, checksum, or digital signature.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 30,
+                  "score": ""
+                },
+                {
+                  "id": "e5306016-05aa-485a-9eb3-7f39ed05458a",
+                  "title": "Malicious configuration or firmware update on devices.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Tampering",
+                  "description": "Malicious configuration or firmware update on devices.",
+                  "mitigation": "Secure boot and firmware signature verification; encrypted update packages.\n",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 37,
+                  "score": ""
+                },
+                {
+                  "id": "790df2c4-a417-441d-8c73-d70290eff7a5",
+                  "title": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "mitigation": "No logs for who/what sent content to LED/Audio devices → cannot trace malicious behavior.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 40,
+                  "score": ""
+                },
+                {
+                  "id": "63d09658-b9d8-41e1-bd7b-3cfa6743e46e",
+                  "title": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "mitigation": "Flood or malformed industrial protocol packets cause  device to freeze or crash.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 43,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "tampering": 4,
+                "repudiation": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
               }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 17,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "a28731eb-4462-4cc3-a994-0f697384684e"
-                },
-                {
-                  "group": "right",
-                  "id": "7bc7e4c1-94e8-4e27-8135-9fc44f062d37"
-                },
-                {
-                  "group": "bottom",
-                  "id": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-                },
-                {
-                  "group": "left",
-                  "id": "2289b35a-e870-4865-81e4-37056b3bb4c8"
-                }
-              ]
-            },
-            "id": "9c7aa448-2e77-48c2-9c92-4556d7fb69cf",
-            "data": {
-              "type": "tm.Process",
-              "name": "Emergency",
-              "description": "emergency call",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": []
-            }
-          },
-          {
-            "position": {
-              "x": 100,
-              "y": 655
-            },
-            "size": {
-              "width": 80,
-              "height": 80
-            },
-            "attrs": {
-              "text": {
-                "text": "Counting"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "process",
-            "zIndex": 18,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "a28731eb-4462-4cc3-a994-0f697384684e"
-                },
-                {
-                  "group": "right",
-                  "id": "7bc7e4c1-94e8-4e27-8135-9fc44f062d37"
-                },
-                {
-                  "group": "bottom",
-                  "id": "b44ff41a-8805-4b00-8fbe-ae8314249ef0"
-                },
-                {
-                  "group": "left",
-                  "id": "2289b35a-e870-4865-81e4-37056b3bb4c8"
-                }
-              ]
-            },
-            "id": "5c042a8b-538d-4304-b2ea-475cc991648f",
-            "data": {
-              "type": "tm.Process",
-              "name": "Counting",
-              "description": "passenger counting and car occupancy",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "handlesCardPayment": false,
-              "handlesGoodsOrServices": false,
-              "isWebApplication": false,
-              "privilegeLevel": "",
-              "threats": []
             }
           },
           {
@@ -2608,6 +2388,6 @@
     ],
     "diagramTop": 3,
     "reviewer": "Tom",
-    "threatTop": 16
+    "threatTop": 46
   }
 }
